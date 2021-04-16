@@ -16,6 +16,9 @@ import StoryInfo from "./app/components/StoryInfo";
 import { getStoryIds } from "./app/services/hackingNewsAPI";
 
 
+
+
+
 export default function App() {
 
   const [storyIds, setStoryIds] = useState([]);
@@ -39,7 +42,7 @@ export default function App() {
           </Button>
         </Left>
         <Body>
-          <Title>Real hacker news</Title>
+          <Title>Real hacker news!</Title>
         </Body>
         <Right>
           {/* <Button transparent  

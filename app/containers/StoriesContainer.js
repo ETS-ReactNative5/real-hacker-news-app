@@ -21,8 +21,6 @@ import { getStoryIds } from "../services/hackingNewsAPI";
 // };
 //experiment
 
-
-
 export default function StoriesContainer() {
 
   //experiment
@@ -45,6 +43,43 @@ export default function StoriesContainer() {
   //set stories from API call
   const [storyIds, setStoryIds] = useState([]);
   
+  //NEW USEFFECT
+  useEffect(() => {
+    setRefreshing(true);
+    
+    getStoryIds()
+      .then(data => {
+        setStoryIds(data);
+      })
+      .then(() => setRefreshing(false))
+      .then(()=>{console.log("the first refresh");});
+  
+    //set interval for repeating refresh
+    const interval=setInterval(()=>{
+      setRefreshing(true);
+      getStoryIds()
+        .then(data => {
+          setStoryIds(data);
+       
+        })
+        .then(() => setRefreshing(false))
+        .then(()=>{ console.log("another successful auto refresh"); });
+    },60000);  
+
+    //and clear it :)
+    return()=>clearInterval(interval);
+  }, []);
+
+  // for manual refresh BUTTON
+  // const  handleRefresh = () => {
+  //   getStoryIds().then(data => {
+  //     setStoryIds(data);
+  //     console.log("manual refresh");
+  //   });
+  // };
+  
+
+  //OLD USEEFFECT
   // useEffect(() => {
   //   getStoryIds().then(data => {
   //     setStoryIds(data);
@@ -62,7 +97,7 @@ export default function StoriesContainer() {
   //   return()=>clearInterval(interval);
   // }, []);
 
-  //for manual refresh BUTTON
+  // for manual refresh BUTTON
   // const  handleRefresh = () => {
   //   getStoryIds().then(data => {
   //     setStoryIds(data);
@@ -91,7 +126,7 @@ export default function StoriesContainer() {
       {/* END BUTTON FOR REFRESH */}
       
       {/* MAP API CALL RESULT */}
-      {storyIds.slice(0, 100).map(storyId => 
+      {storyIds.slice(0, 20).map(storyId => 
         <TouchableOpacity key={storyId}
         // style={styles.button}
           onPress= {() => {Actions.pageTwo({storyId: storyId}); }}

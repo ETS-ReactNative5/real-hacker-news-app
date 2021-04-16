@@ -3,7 +3,12 @@ import { Container, Content, Text, Card, Header, Body, Button, Title, CardItem }
 import { Actions } from "react-native-router-flux";
 
 export default function StoryInfo(props) {
-  console.log(props);
+  // console.log(props);
+  // var a = document.querySelectorAll("meta[property='og:image']")[0].content;
+  // console.log(a);
+  // var element = document.querySelector("meta[property=\"og:https://github.com/\"]");
+  // var content = element && element.getAttribute("content");
+  // console.log(content);
   return(
     <Container>
       {/* <Header>
