@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Container, Header, Title, 
   Content, Footer, FooterTab, 
   Button,  Left, Right, 
@@ -13,9 +13,14 @@ import { Router, Scene } from "react-native-router-flux";
 import { useFonts } from "expo-font";
 import StoriesContainer from "./app/containers/StoriesContainer";
 import StoryInfo from "./app/components/StoryInfo";
+import { getStoryIds } from "./app/services/hackingNewsAPI";
 
 
 export default function App() {
+
+  const [storyIds, setStoryIds] = useState([]);
+
+  //for fonts
   const [loaded] = useFonts({
     Roboto: require("native-base/Fonts/Roboto.ttf"),
     Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -36,7 +41,18 @@ export default function App() {
         <Body>
           <Title>Real hacker news</Title>
         </Body>
-        <Right><Button transparent ><Icon name='reload' /></Button></Right>
+        <Right>
+          {/* <Button transparent  
+         onPress={
+          ()=>getStoryIds()
+             .then(data => {
+               setStoryIds(data);
+             })
+         }
+         >
+         <Icon name='reload' />
+         </Button> */}
+        </Right>
       </Header>
 
 
@@ -72,7 +88,12 @@ export default function App() {
       <Router hideNavBar= "true">
         <Scene key="root" hideNavBar={true} >
           <Content style={{ backgroundColor: "grey" }} >
-            <Scene key="pageOne" component={StoriesContainer} title="Fresh news" initial={true} />
+            <Scene 
+              key="pageOne" 
+              component={StoriesContainer} 
+              title="Fresh news" 
+              initial={true} 
+              hideNavBar={true}/>
             <Scene key="pageTwo" component={StoryInfo} title="News info" hideNavBar={true} />
           </Content> 
         </Scene>
