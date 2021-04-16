@@ -1,68 +1,48 @@
-import { Text, View, Linking, StyleSheet } from "react-native";
+import { View, Linking} from "react-native";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import { getStory } from "../services/hackingNewsAPI";
-// import { StoryWrapper } from "../styles/StoryStyles";
+import { mapTime } from "../mappers/mapTime";
+import { Card, CardItem, Body, Text } from "native-base";
 
-export const Story = (props) => {
+export const Story = memo(function Story(props) {
   const [story, setStory] = useState({});
 
   useEffect(() => {
     getStory(props.storyId).then(data => {
       data && data.url && setStory(data);
-      // console.log(data);
     }
     );
   }, []);
+  let date = new Date(story.time*1000).toDateString();
 
   return (story && story.url ? (
-    <View style={styles.storyWrapper}>
-      <Text>===========</Text>
-
-      <Text>Id: {story.id}</Text>
-      <Text>Title: {story.title}</Text>
-      <Text>By: {story.by}</Text>
-      <Text>Posted: {story.time}</Text>
-      <Text style={{ color: "blue" }}
-        onPress={() => Linking.openURL(story.url)}>link</Text>
-      <Text>===========</Text>
-    </View>) : null);
-};
- 
-// export const StoryWrapper = styled.View`
-// padding-top: 10px;
-// margin-bottom: 20px;
-// border-top: 1px solid #cccccc;
-
-// &:first-of-type{
-//     border-top:0;
-// }
-
-// &:last-of-type{
-//     margin-bottom:0;
-//     padding-bottom:0;
-// }
-// `;
-
-const styles = StyleSheet.create({
-  storyWrapper: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-    
-  storyTitle: {
-    // margin-bottom: 5px;
-    // font-size:18 px;
-    // line-height:1.8;
-    // margin: 0;
-    // text-decoration:none;
-  },
-  link: {
-    //   color:#2e2e2c;
-    //   backgroundColor:#f8dc3d;
-    //   text-decoration: none;
-  }
+    <Card >
+      <CardItem>
+        <Body>
+          <View >
+            <Text style={{fontWeight: "bold"}}>{story.title}</Text>
+            {/* <Text>Rating:  {(() => {
+              switch (true) {
+              case (story.score===1):   return ` (${story.score})⭐`;
+              case (story.score===2): return  `(${story.score})⭐⭐`;
+              case (story.score===3):  return  `(${story.score})⭐⭐⭐`;
+              case (story.score===4):  return  `(${story.score})⭐⭐⭐⭐`;
+              case (story.score===5):  return `(${story.score})⭐⭐⭐⭐⭐`;
+              case (story.score>5):  return `(${story.score})⭐⭐⭐⭐⭐+`;
+              default:      return "=)";
+              }
+            })()}</Text>  */}
+            <Text>Rating: {story.score}</Text> 
+            <Text>By: {story.by}</Text>
+            <Text>Id: {story.id}</Text> 
+            <Text>Publish date: {date} </Text>
+            <Text>Posted: {mapTime(story.time)} ago</Text>
+            <Text style={{ color: "blue" }}
+              onPress={() => Linking.openURL(story.url)}>link</Text>
+          </View>
+        </Body>
+      </CardItem>
+    </Card>) : null);
 
 });

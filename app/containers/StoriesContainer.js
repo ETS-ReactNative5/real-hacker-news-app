@@ -1,29 +1,44 @@
-const { 
-  getStoryIds, 
-  // getStory
-} = require("../services/hackingNewsAPI");
 import { 
-  // StyleSheet, 
-  Text,
-  View } from "react-native";
+  View, 
+  TouchableOpacity
+} from "react-native";
 
 import React, { useEffect, useState } from "react";
 import { Story } from "../components/Story";
 
-export default function StoriesContainer() {
-  const [storyIds, setStoryIds] = useState([]);
 
+import { Container, Content, Text, Card, Header, Body, Button, Title, CardItem } from "native-base";
+import { Actions } from "react-native-router-flux";
+
+
+
+const { 
+  getStoryIds, 
+  // getStory
+} = require("../services/hackingNewsAPI");
+
+export default function StoriesContainer() {
+
+  const [storyIds, setStoryIds] = useState([]);
+  
   useEffect(() => {
     getStoryIds().then(data => {
       setStoryIds(data);
-      console.log(data);
     });
+    setInterval(() => {
+      console.log("df");
+    }, 10000);
   }, []);
 
   return (
-    <View><Text>Hacker news stories</Text>
-      {storyIds.map(storyId => 
-        <Story key={storyId} storyId={storyId}/>
+    <View>
+      {storyIds.slice(0, 100).map(storyId => 
+        <TouchableOpacity key={storyId}
+        // style={styles.button}
+          onPress= {() => {Actions.pageTwo(); }}
+        > 
+          <Story key={storyId} storyId={storyId}/>
+        </TouchableOpacity>
       )}
     </View>
   );
