@@ -1,8 +1,9 @@
 import React from "react";
 import { Container, Header, Title, 
-  Content, Footer, FooterTab, 
-  Button,  Left, Right, 
-  Body, Icon,  Text,  
+  Content, Body,
+  // Footer, FooterTab, 
+  // Button, Text, 
+  // Left, Right,  Icon,   
 } from "native-base";
 
 // import { Actions } from "react-native-router-flux";
@@ -10,15 +11,15 @@ import { Router, Scene } from "react-native-router-flux";
 
 import { useFonts } from "expo-font";
 import StoriesContainer from "./app/containers/StoriesContainer";
-import Comments from "./app/components/Comments";
+import CommentsContainer from "./app/containers/CommentsContainer";
 // import { getStoryIds } from "./app/services/hackingNewsAPI";
 
 export default function App() {
 
-  // const [storyIds, setStoryIds] = useState([]);
 
   //for fonts
   const [loaded] = useFonts({
+    Helvetica: require("native-base/Fonts/Roboto.ttf"),
     Roboto: require("native-base/Fonts/Roboto.ttf"),
     Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
   });
@@ -28,18 +29,18 @@ export default function App() {
   }
 
   return (
-    <Container>
-      <Header>
-        <Left>
-          <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
+    <Container >
+      <Header style={{backgroundColor: "#003133"}}>
+        {/* <Left>
+          <Button transparent onPress={() =>}>
             <Icon name='menu' />
           </Button>
-        </Left>
+        </Left> */}
         <Body>
-          <Title>Real hacker news!</Title>
+          <Title style ={{ alignSelf: "center", margin: 10}}>Real hacker news</Title>
         </Body>
-        <Right>
-        </Right>
+        {/* <Right>
+        </Right> */}
       </Header>
 
       <Router hideNavBar= "true">
@@ -51,19 +52,19 @@ export default function App() {
               title="Fresh news" 
               initial={true} 
               hideNavBar={true}/>
-            <Scene key="pageTwo" component={Comments} title="News info" hideNavBar={true} />
+            <Scene key="pageTwo" component={CommentsContainer} title="News info" hideNavBar={true} />
           </Content> 
         </Scene>
       </Router>
 
 
-      <Footer>
+      {/* <Footer>
         <FooterTab>
           <Button full>
             <Text>Footer</Text>
           </Button>
         </FooterTab>
-      </Footer>
+      </Footer> */}
     </Container>
   );
 }

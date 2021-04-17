@@ -1,15 +1,14 @@
 import React, { useEffect, useState, memo } from "react";
 import { getStory as getComment } from "../services/hackingNewsAPI";
 import { mapTime } from "../mappers/mapTime";
-import { Card, CardItem, Body, Text, Thumbnail, Left, Accordion, Content, Icon  } from "native-base";
+import { Card, CardItem, Body, 
+  Text,  Left, Icon, 
+  // Accordion, Content, Thumbnail
+} from "native-base";
 
 import HTML from "react-native-render-html";
 
-//^^^^^
-import { 
-  RefreshControl,
-} from "react-native";
-//^^^^^
+import {RefreshControl} from "react-native";
 
 // import { Actions } from "react-native-router-flux";
 // import RNUrlPreview from "react-native-url-preview";
@@ -17,8 +16,10 @@ import {
 
 export const Comment = memo(function Comment(props) {
 
-  
-  //^^^^^
+  //set comment
+  const [comment, setComment] = useState({});
+
+  //refreshing 
   const [refreshing, setRefreshing] = React.useState(false);
 
   const onRefresh = React.useCallback(() => {
@@ -27,14 +28,9 @@ export const Comment = memo(function Comment(props) {
 
     getComment(props.commentId).then(data => setComment(data))
       .then(() => setRefreshing(false));
-    // wait(2000).then(() => setRefreshing(false));
   }, []);
-  //^^^^^
 
-
-  const [comment, setComment] = useState({});
-
-
+  //useEffect for initialize and interval refreshing
   useEffect(() => {
     setRefreshing(true);
 
@@ -42,19 +38,21 @@ export const Comment = memo(function Comment(props) {
       .then(() => setRefreshing(false));
     // .then(()=>{console.log("comment auto refresh");});
 
+    //set interval for repeating refresh
     const interval=setInterval(()=>{
       setRefreshing(true);
 
       getComment(props.commentId).then(data =>  setComment(data))
         .then(() => setRefreshing(false));
       // .then(()=>{console.log("comment auto refresh");});
-    },5000);  
+    },10000);  
 
     //and clear it :)
     return()=>clearInterval(interval);
 
   }, []);
 
+  //date converting
   let date = new Date(comment.time*1000).toDateString();
 
   return (comment && comment.text  ? (
@@ -65,6 +63,7 @@ export const Comment = memo(function Comment(props) {
         onRefresh={onRefresh}
       />
     } >
+      {/* COMMENT HEADER */}
       <CardItem header >
         <Left>
           <Icon name="chatbubble-outline" />
@@ -74,30 +73,29 @@ export const Comment = memo(function Comment(props) {
             <Text note>{date}</Text>
           </Body>
         </Left>
-       
       </CardItem>
+      {/* END COMMENT HEADER */}
+
+      {/* COMMENT BODY */}
       <CardItem>
         <Body style={{ color: "blue" }}>
-          {/* <RNUrlPreview text={comment.url}/> */}
-          {/* <Text>Press to open in browser</Text> */}
           <HTML source={{ html: comment.text }}  />
           {/* <Text>{comment.text}</Text> */}
         </Body>
       </CardItem>
+      {/* END COMMENT BODY */}
+
+      {/* COMMENT FOOTER */}
       <CardItem footer bordered style={{ justifyContent: "space-between" }}>
         {comment.kids ?
           <Text style={{ color: "blue" }}
             // onPress={  () => {Actions.pageTwo({comment}); }   }
-            
           >Replies({comment.kids.length})</Text>
           : <Text style={{ color: "grey" }}>No replies yet</Text>}
-
-        {/* onPress={() => Linking.openURL(comment.url)}>link</Text> */}
         <Text>{mapTime(comment.time)} ago</Text>
-        {/* <Accordion dataArray={dataArray} expanded={0}/> */}
       </CardItem>
-      {/* <Content padder> */}
-      {/* </Content> */}
+      {/* END COMMENT FOOTER */}
+
     </Card>
 
   ) : null);
