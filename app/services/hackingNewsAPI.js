@@ -6,6 +6,16 @@ export const newStoriesUrl = `${baseUrl}/newstories.json`;
 
 export const storyUrl = `${baseUrl}/item/`;
 
+export const commentUrl = `${baseUrl}/item/2921983.json?print=pretty`;
+
+
+export const getComment = async (storyId) => {
+  const result = await axios.get(`${storyUrl}${storyId}.json`)
+    .then(({ data }) => data
+    );
+  return result;
+};
+
 export const getStory = async (storyId) => {
   const result = await axios.get(`${storyUrl}${storyId}.json`)
     .then(({ data }) => data

@@ -33,7 +33,7 @@ export const mapTime = timestamp => {
     return `${interval} minutes`;
   }
 
-  // return `${Math.floor(seconds)} seconds`;
-  return "about minute";
+  return `${Math.floor(seconds)} seconds`;
+  // return "about minute";
 
 };
