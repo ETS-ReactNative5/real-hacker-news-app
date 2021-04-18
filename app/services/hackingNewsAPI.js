@@ -26,7 +26,7 @@ export const getStory = async (storyId) => {
 };
 
 export const getStoryIds = async () => {
-  const result = await axios.get(bestStoriesUrl)
+  const result = await axios.get(newStoriesUrl)
     .then(({ data }) => data);
   return result;
 };

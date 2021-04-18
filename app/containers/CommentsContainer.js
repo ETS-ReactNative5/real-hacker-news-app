@@ -11,9 +11,28 @@ import { Comment } from "../components/Comment";
 import { getStory } from "../services/hackingNewsAPI";
 import {RefreshControl} from "react-native";
 
+//SCROLLVIEW INFINITE SCROLL
+const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
+  const paddingToBottom = 20;
+  return layoutMeasurement.height + contentOffset.y >=
+    contentSize.height - paddingToBottom;
+};
+//SCROLLVIEW INFINITE SCROLL
+
 export default function CommentsContainer(props) {
 
   // console.log(props.story.id);
+
+  //set number comments to show
+  const [commentsToShow, setCommentsToShow] = useState(5);
+
+  const handleSetCommentsToShow = () => {
+    if( commentsToShow < props.story.kids.length){
+      setCommentsToShow(commentsToShow+5);
+    }else {
+      setCommentsToShow(props.story.kids.length);
+    }
+  };
   
   //get id array from props and set 
   const [comments, setComments] = useState({});
@@ -66,13 +85,26 @@ export default function CommentsContainer(props) {
   let date = new Date(props.story.time*1000).toDateString();
 
   return(
-    <Container>
-      <Content refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-        />
-      } >
+    <Container 
+    
+    >
+      <Content 
+        onScroll={({nativeEvent}) => {
+          if (isCloseToBottom(nativeEvent)) {
+            console.log(commentsToShow);
+            console.log("bikini bottom");
+            handleSetCommentsToShow();
+          }
+        }}
+        scrollEventThrottle={400}
+        
+
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        } >
 
         {/* STORY CARD */}
         <Card >
@@ -101,7 +133,7 @@ export default function CommentsContainer(props) {
         {/* END STORY CARD */}
 
         {/* MAP COMMENTS */}
-        {comments && comments.length > 0 && comments.map(commentId => <Comment key={commentId} commentId={commentId}/> )}
+        {comments && comments.length > 0 && comments.slice(0,commentsToShow).map(commentId => <Comment key={commentId} commentId={commentId}/> )}
         {/* MAP COMMENTS */}
  
       </Content>
