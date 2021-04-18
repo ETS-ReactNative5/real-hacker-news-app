@@ -13,8 +13,9 @@ import {RefreshControl} from "react-native";
 
 //SCROLLVIEW INFINITE SCROLL
 const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
+  console.log({layoutMeasurement, contentOffset, contentSize});
   const paddingToBottom = 20;
-  return layoutMeasurement.height + contentOffset.y >=
+  return layoutMeasurement.height + contentOffset.y + 100 >=
     contentSize.height - paddingToBottom;
 };
 //SCROLLVIEW INFINITE SCROLL
