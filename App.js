@@ -37,7 +37,7 @@ export default function App() {
           </Button>
         </Left> */}
         <Body>
-          <Title style ={{ alignSelf: "center", margin: 10}}>Real hacker news</Title>
+          <Title style ={{ alignSelf: "center", margin: 10, color: "white"}}>Real hacker news</Title>
         </Body>
         {/* <Right>
         </Right> */}

@@ -45,7 +45,7 @@ export const Story = memo(function Story(props) {
       getStory(props.storyId).then(data =>  data && data.url && setStory(data))
         .then(() => setRefreshing(false));
       // .then(()=>{console.log("story auto refresh");});
-    },30000);  
+    },45000);  
 
     //and clear it :)
     return()=>clearInterval(interval);

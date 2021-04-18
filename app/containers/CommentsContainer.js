@@ -33,6 +33,10 @@ export default function CommentsContainer(props) {
 
   //useEffect for initialize and interval refreshing
   useEffect(() => {
+    
+    //extrastep for exclude error of empty array of comments
+    setComments(props.story.kids);
+
     setRefreshing(true);
 
     getStory(props.story.id).then(data =>  data.kids && setComments(data.kids))
@@ -46,7 +50,7 @@ export default function CommentsContainer(props) {
       getStory(props.story.id).then(data =>  data.kids && setComments(data.kids))
         .then(() => setRefreshing(false));
     // .then(()=>{console.log("story auto refresh");});
-    },15000);  
+    },45000);  
 
     //and clear it :)
     return()=>clearInterval(interval);
