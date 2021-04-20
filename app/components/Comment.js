@@ -1,23 +1,15 @@
 import React, { useEffect, useState, memo } from "react";
 import { getStory as getComment } from "../services/hackingNewsAPI";
 import { mapTime } from "../mappers/mapTime";
-import { 
-  // Card, CardItem, Body, 
-  Text,  
-  // Left, Icon, 
-  // List, ListItem,
-  // Accordion, 
-  //Content, Thumbnail
-} from "native-base";
+import { Text } from "native-base";
 
 import { List } from "react-native-paper";
 
 import HTML from "react-native-render-html";
 
-import {RefreshControl} from "react-native";
+// import { RefreshControl } from "react-native";
 
 export const Comment = memo(function Comment(props) {
-
   //toggle head comment(s) expanding
   const [expanded, setExpanded] = React.useState(true);
   const handlePress = () => setExpanded(!expanded);
@@ -25,141 +17,124 @@ export const Comment = memo(function Comment(props) {
   //set comment
   const [comment, setComment] = useState({});
 
-  //refreshing 
+  //refreshing
   const [refreshing, setRefreshing] = React.useState(false);
 
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-    // console.log("swipe refresh refresh");
+  // const onRefresh = React.useCallback(() => {
+  //   setRefreshing(true);
 
-    getComment(props.commentId).then(data => setComment(data))
-      .then(() => setRefreshing(false));
-  }, []);
+  //   getComment(props.commentId)
+  //     .then((data) => setComment(data))
+  //     .then(() => setRefreshing(false));
+  // }, []);
 
   //useEffect for initialize and interval refreshing
   useEffect(() => {
     setRefreshing(true);
 
-    getComment(props.commentId).then(data => setComment(data))
+    getComment(props.commentId)
+      .then((data) => setComment(data))
       .then(() => setRefreshing(false));
     // .then(()=>{console.log("comment auto refresh");});
 
     //set interval for repeating refresh
-    const interval=setInterval(()=>{
+    const interval = setInterval(() => {
       setRefreshing(true);
 
-      getComment(props.commentId).then(data =>  setComment(data))
+      getComment(props.commentId)
+        .then((data) => setComment(data))
         .then(() => setRefreshing(false));
       // .then(()=>{console.log("comment auto refresh");});
-    },30000);  
+    }, 30000);
 
     //and clear it :)
-    return()=>clearInterval(interval);
-
+    return () => clearInterval(interval);
   }, []);
 
   //date converting
-  let date = new Date(comment.time*1000).toDateString();
+  let date = new Date(comment.time * 1000).toDateString();
 
-  return (comment && comment.text  ? (
-
-    <List.Section style={{
-
-      borderBottomColor: "#E8E8E8",
-      borderBottomWidth: 2,
-      // borderWidth: 1,
-      // borderColor: "#20232a",
-      // borderRadius: 6,
-      backgroundColor: "#F5F5F5"}}>
+  return comment && comment.text ? (
+    <List.Section
+      style={{
+        borderBottomColor: "#E8E8E8",
+        borderBottomWidth: 2,
+        // borderWidth: 1,
+        // borderColor: "#20232a",
+        // borderRadius: 6,
+        backgroundColor: "#F5F5F5",
+      }}
+    >
       <List.Accordion
         expanded={expanded}
         onPress={handlePress}
         style={{
-          backgroundColor: "#E8E8E8"}}
+          backgroundColor: "#E8E8E8",
+        }}
         title={<Text>Comment by: {comment.by}</Text>}
-        description={date}
-        left={props => <List.Icon {...props} icon="chat-processing-outline" />}
+        description={`${date}${refreshing ? " refreshing..." : ""}`}
+        left={(props) => (
+          <List.Icon {...props} icon="chat-processing-outline" />
+        )}
       >
-        <List.Item  left={props =>   <HTML source={{ html: comment.text }}  />}/>
-        <List.Item  
-          left={props =>   <Text>  {comment.kids ?
-            <Text style={{ color: "blue" }}
-            // onPress={  () => {Actions.pageTwo({comment}); }   }
-            >Replies({comment.kids.length})</Text>
-            : <Text style={{ color: "grey" }}>No replies yet</Text>}</Text>}
-          right={props =>   <Text>{mapTime(comment.time)} ago</Text>}
-        
+        <List.Item left={() => <HTML source={{ html: comment.text }} />} />
+        <List.Item
+          left={() => (
+            <Text>
+              {" "}
+              {comment.kids ? (
+                <Text
+                  style={{ color: "blue" }}
+                  // onPress={  () => {Actions.pageTwo({comment}); }   }
+                >
+                  Replies({comment.kids.length})
+                </Text>
+              ) : (
+                <Text style={{ color: "grey" }}>No replies yet</Text>
+              )}
+            </Text>
+          )}
+          right={() => <Text>{mapTime(comment.time)} ago</Text>}
         />
         {/* REPLIES */}
-        {comment.kids &&
-        <List.Item 
-          left={props => <List.Icon {...props}  style={{margin: 0, padding: 0}}  icon="share-all-outline" />}
-          style={{margin: 0, padding: 0,  justifyContent:"center", alignContent: "center"}} 
-          titleStyle={{margin: 0, padding: 0, height: 0}} 
-          description={props =>  
-            <List.Accordion 
-              style={{margin: -6, padding: 0}} 
-              title="toggle replies"
-              titleStyle={{margin: 0, padding: 0}} 
-              descriptionStyle={{margin: 0, padding: 0,  backgroundColor: "purple"}} 
-            >
-              {/* HERE COMES THE RECURSION */}
-              {comment.kids && comment.kids.map(kid => 
-                <Comment key={kid} commentId={kid}/>
-              )}
-              {/* HERE COMES THE RECURSION */}
-            </List.Accordion>
-          }/>
-        }
+        {comment.kids && (
+          <List.Item
+            left={(props) => (
+              <List.Icon
+                {...props}
+                style={{ margin: 0, padding: 0 }}
+                icon="share-all-outline"
+              />
+            )}
+            style={{
+              margin: 0,
+              padding: 0,
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+            titleStyle={{ margin: 0, padding: 0, height: 0 }}
+            description={() => (
+              <List.Accordion
+                style={{ margin: -6, padding: 0 }}
+                title="toggle replies"
+                titleStyle={{ margin: 0, padding: 0 }}
+                descriptionStyle={{
+                  margin: 0,
+                  padding: 0,
+                  backgroundColor: "purple",
+                }}
+              >
+                {/* HERE COMES THE RECURSION */}
+                {comment.kids &&
+                  comment.kids.map((kid) => (
+                    <Comment key={kid} commentId={kid} />
+                  ))}
+                {/* HERE COMES THE RECURSION */}
+              </List.Accordion>
+            )}
+          />
+        )}
       </List.Accordion>
     </List.Section>
-  
-  
-  
-  // <Card  refreshControl={
-  //   <RefreshControl
-  //     refreshing={refreshing}
-  //     onRefresh={onRefresh}
-  //   />
-  // } >
-  //   {/* COMMENT HEADER */}
-  //   <CardItem header >
-  //     <Left>
-  //       <Icon name="chatbubble-outline" />
-  //       <Body>
-           
-  //         <Text style={{fontWeight: "bold"}}>{comment.by}</Text>
-  //         <Text note>{date}</Text>
-  //       </Body>
-  //     </Left>
-  //   </CardItem>
-  //   {/* END COMMENT HEADER */}
-
-  //   {/* COMMENT BODY */}
-  //   <CardItem>
-  //     <Body style={{ color: "blue" }}>
-  //       <HTML source={{ html: comment.text }}  />
-  //       {/* <Text>{comment.text}</Text> */}
-  //     </Body>
-  //   </CardItem>
-  //   {/* END COMMENT BODY */}
-  //   {/* <Content padder>
-  //   <Accordion dataArray={dataArray} expanded={0}/>
-  // </Content> */}
-  //   {/* COMMENT FOOTER */}
-  //   <CardItem footer bordered style={{ justifyContent: "space-between" }}>
-  //     {comment.kids ?
-  //       <Text style={{ color: "blue" }}
-  //       // onPress={  () => {Actions.pageTwo({comment}); }   }
-  //       >Replies({comment.kids.length})</Text>
-  //       : <Text style={{ color: "grey" }}>No replies yet</Text>}
-  //     <Text>{mapTime(comment.time)} ago</Text>
-  //   </CardItem>
-  //   {/* END COMMENT FOOTER */}
-
-  // </Card>
-
-  ) : null);
-
-
+  ) : null;
 });
