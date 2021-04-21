@@ -17,8 +17,10 @@ const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
 };
 // END SCROLLVIEW INFINITE SCROLL
 
-export default function StoriesContainer({ navigation }) {
+export default function StoriesContainer({ navigation, route }) {
+  // console.log(route.params.type);
   // console.log(navigation);
+  // console.log(navigation.dangerouslyGetState());
   //set number stories to show
   const [storiesToShow, setStoriesToShow] = useState(20);
 
@@ -45,7 +47,7 @@ export default function StoriesContainer({ navigation }) {
     setRefreshing(true);
     // console.log("swipe refresh");
 
-    getStoryIds(2)
+    getStoryIds(route.params.type)
       .then((data) => {
         setStoryIds(data);
       })
@@ -56,7 +58,7 @@ export default function StoriesContainer({ navigation }) {
   useEffect(() => {
     setRefreshing(true);
 
-    getStoryIds(2)
+    getStoryIds(route.params.type)
       .then((data) => {
         setStoryIds(data);
       })
@@ -66,7 +68,7 @@ export default function StoriesContainer({ navigation }) {
     //set interval for repeating refresh
     const interval = setInterval(() => {
       setRefreshing(true);
-      getStoryIds(2)
+      getStoryIds(route.params.type)
         .then((data) => {
           setStoryIds(data);
         })

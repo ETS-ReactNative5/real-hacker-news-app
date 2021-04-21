@@ -10,11 +10,38 @@ import CommentsContainer from "./app/containers/CommentsContainer";
 // NAV
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 // NAV
 
 // NAV
 const Stack = createStackNavigator();
+const StoriesStack = createStackNavigator();
+const Tab = createMaterialTopTabNavigator();
 // NAV
+
+function StoriesStackScreen(props) {
+  // console.log(props.navigation.dangerouslyGetParent());
+  // console.log(props.route.params[0]);
+  // console.log(props.route.params.type);
+  // console.log(props);
+  return (
+    <StoriesStack.Navigator>
+      <StoriesStack.Screen
+        // tabBarVisible={false}
+        options={{ header: () => null }} //hides the title
+        name="Stories"
+        component={StoriesContainer}
+        initialParams={{ type: props.route.params.type }}
+        // type={props.route.params[0]}
+      />
+      <StoriesStack.Screen
+        name="Comments"
+        component={CommentsContainer}
+        options={{ header: () => null }}
+      />
+    </StoriesStack.Navigator>
+  );
+}
 
 export default function App() {
   //for fonts
@@ -38,10 +65,30 @@ export default function App() {
             </Title>
           </Body>
         </Header>
-        <Stack.Navigator>
+        <Tab.Navigator>
+          <Tab.Screen
+            testProps={"123"}
+            initialParams={{ type: "n" }}
+            name="New"
+            component={StoriesStackScreen}
+          />
+          <Tab.Screen
+            testProps={"456"}
+            initialParams={{ type: "t" }}
+            name="Top"
+            component={StoriesStackScreen}
+          />
+          <Tab.Screen
+            testProps={"789"}
+            initialParams={{ type: "b" }}
+            name="Best"
+            component={StoriesStackScreen}
+          />
+        </Tab.Navigator>
+        {/* <Stack.Navigator>
           <Stack.Screen name="Stories" component={StoriesContainer} />
           <Stack.Screen name="Comments" component={CommentsContainer} />
-        </Stack.Navigator>
+        </Stack.Navigator> */}
         {/* <Router hideNavBar="true">
         <Scene key="root" hideNavBar={true}>
           <Content style={{ backgroundColor: "grey" }}>

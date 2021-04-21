@@ -1,5 +1,8 @@
 import React, { useEffect, useState, memo } from "react";
-import { getStory } from "../services/hackingNewsAPI";
+import {
+  getStory,
+  // getMeta
+} from "../services/hackingNewsAPI";
 import { mapTime } from "../mappers/mapTime";
 import {
   Card,
@@ -10,7 +13,9 @@ import {
   Icon,
   Button,
   // Right,
-} from "native-base";
+  // Thumbnail,
+  // Spinner,
+} from "native-base"; // Right,
 
 import { Linking, RefreshControl } from "react-native";
 
@@ -18,6 +23,9 @@ import { Linking, RefreshControl } from "react-native";
 // import RNUrlPreview from "react-native-url-preview"; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 export const Story = memo(function Story(props) {
+  //setPreview
+  // const [previewData, setPreviewData] = useState({});
+
   //set story
   const [story, setStory] = useState({});
 
@@ -28,6 +36,8 @@ export const Story = memo(function Story(props) {
     setRefreshing(true);
     // console.log("story refresh");
 
+    // getMeta(story.url).then((res) => setPreviewData(res));
+
     getStory(props.storyId)
       .then((data) => data && data.url && setStory(data))
       .then(() => setRefreshing(false));
@@ -37,6 +47,21 @@ export const Story = memo(function Story(props) {
   useEffect(() => {
     setRefreshing(true);
 
+    // getMeta(story.url).then((res) => setPreviewData(res));
+
+    // getStory(props.storyId)
+    //   .then(function (data) {
+    //     data && data.url && setStory(data);
+    //     return data;
+    //   })
+    //   .then((data) => {
+    //     data &&
+    //       data.url &&
+    //       getMeta(data.url).then((res) => setPreviewData(res));
+    //   })
+
+    //   .then(() => setRefreshing(false));
+
     getStory(props.storyId)
       .then((data) => data && data.url && setStory(data))
       .then(() => setRefreshing(false));
@@ -45,6 +70,8 @@ export const Story = memo(function Story(props) {
     //set interval for repeating refresh
     const interval = setInterval(() => {
       setRefreshing(true);
+
+      // getMeta(story.url).then((res) => setPreviewData(res));
 
       getStory(props.storyId)
         .then((data) => data && data.url && setStory(data))
@@ -80,6 +107,7 @@ export const Story = memo(function Story(props) {
       {/* END HEADER OF A STORY */}
 
       {/* BODY OF A STORY */}
+      <CardItem></CardItem>
       <CardItem style={{ justifyContent: "flex-end" }}>
         {/* <Body style={{ color: "blue" }}> */}
         {/* <Right> */}

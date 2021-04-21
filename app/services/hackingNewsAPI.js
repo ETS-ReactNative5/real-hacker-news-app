@@ -26,14 +26,26 @@ export const getStory = async (storyId) => {
 };
 
 export const getStoryIds = async (type) => {
+  console.log(type);
   let newsType =
-    type === 1
+    type === "n"
       ? newStoriesUrl
-      : type === 2
+      : type === "b"
       ? bestStoriesUrl
-      : type === 2
+      : type === "t"
       ? topStoriesUrl
       : newStoriesUrl;
   const result = await axios.get(newsType).then(({ data }) => data);
+  return result;
+};
+
+export const getMeta = async (holyUrl) => {
+  console.log("holyUrl", holyUrl);
+  const result = await axios
+    .get(
+      `https://api.microlink.io/?url=${holyUrl}&audio=false&iframe=false&palette=false&screenshot=false&video=falses`
+    )
+    .then((data) => data.data.data);
+  // .then((data) => console.log(data));
   return result;
 };

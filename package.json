@@ -14,6 +14,7 @@
     "@babel/runtime": "7.0.0-beta.55",
     "@expo/webpack-config": "^0.12.67",
     "@flyerhq/react-native-link-preview": "^1.2.0",
+    "@microlink/react": "^5.5.5",
     "@react-native-community/blur": "^3.6.0",
     "@react-native-community/datetimepicker": "3.2.0",
     "@react-native-community/masked-view": "0.1.10",
@@ -45,6 +46,7 @@
     "react-native-gesture-handler": "^1.10.3",
     "react-native-image-progress": "^1.1.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.3",
+    "react-native-link-preview": "^1.4.2",
     "react-native-paper": "^4.7.2",
     "react-native-progress": "^4.1.2",
     "react-native-reanimated": "^2.1.0",
@@ -56,6 +58,7 @@
     "react-native-ui-lib": "^5.22.0",
     "react-native-url-preview": "^1.1.9",
     "react-native-web": "~0.13.12",
+    "react-tiny-link": "^3.6.1",
     "styled-components": "^5.2.3",
     "url-metadata": "^2.5.0"
   },

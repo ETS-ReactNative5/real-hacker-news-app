@@ -10,14 +10,22 @@ import {
   Icon,
   Left,
   Body,
+  Right,
+  Thumbnail,
+  Spinner,
+  Image,
 } from "native-base";
 
 // import { Actions } from "react-native-router-flux";!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // import { LinkPreview } from "@flyerhq/react-native-link-preview";
 // import { getLinkPreview, getPreviewFromContent } from "link-preview-js";
+// import { ReactTinyLink } from "react-tiny-link";
+// import LinkPreviewCus from "../utils/LinkPreview";
+// import Microlink from "@microlink/react"; // might work someday
+// import { useScrapper } from "react-tiny-link";
 
 import { Comment } from "../components/Comment";
-import { getStory } from "../services/hackingNewsAPI";
+import { getStory, getMeta } from "../services/hackingNewsAPI";
 import { RefreshControl } from "react-native";
 
 //SCROLLVIEW INFINITE SCROLL (+100 causes earlier scroll update)
@@ -36,7 +44,9 @@ export default function CommentsContainer({ route, navigation }) {
   // console.log(navigation);
 
   let props = route.params;
+
   // console.log(props.story.id);
+  const [previewData, setPreviewData] = useState({});
 
   //set number comments to show
   const [commentsToShow, setCommentsToShow] = useState(5);
@@ -72,9 +82,25 @@ export default function CommentsContainer({ route, navigation }) {
 
     setRefreshing(true);
 
+    //!!!!!!!!!!!!!!!
     getStory(props.story.id)
-      .then((data) => data.kids && setComments(data.kids))
+      .then(function (data) {
+        data.kids && setComments(data.kids);
+        return data;
+      })
+      .then((data) => {
+        data && getMeta(props.story.url).then((res) => setPreviewData(res));
+      })
       .then(() => setRefreshing(false));
+    // .then((res) => console.log(res));
+    //!!!!!!!!!!!!!!!
+
+    //that
+    // getStory(props.story.id)
+    //   .then((data) => data.kids && setComments(data.kids))
+    //   .then(() => setRefreshing(false));
+    //that
+
     // .then(()=>{console.log("story useEffect refresh");});
 
     // getLinkPreview("https://www.youtube.com/watch?v=MejbOFk7H6c").then(
@@ -107,7 +133,10 @@ export default function CommentsContainer({ route, navigation }) {
   let date = new Date(props.story.time * 1000).toDateString();
 
   //preview
-
+  // const [result, loading, error] = useScrapper({
+  //   url:
+  //     "https://www.amazon.com/Steve-Madden-Mens-Jagwar-10-5/dp/B016X44MKA/ref=lp_18637582011_1_1?srs=18637582011&ie=UTF8&qid=1550721409&sr=8-1",
+  // });
   //preview
 
   return (
@@ -135,6 +164,12 @@ export default function CommentsContainer({ route, navigation }) {
                 <Text note>{date}</Text>
               </Body>
             </Left>
+            <Right>
+              {previewData.logo && <Thumbnail source={previewData.logo.url} />}
+              {/* {previewData.logo.url && (
+                  <Thumbnail source={{ uri: previewData.logo.url }} />
+                )} */}
+            </Right>
           </CardItem>
           {/* PREVIEW */}
           <CardItem
@@ -143,6 +178,32 @@ export default function CommentsContainer({ route, navigation }) {
           >
             {/* <Text>{previewContainer.description}</Text> */}
             {/* <LinkPreview text={props.story.url} /> */}
+            {/* <ReactTinyLink
+              cardSize="small"
+              showGraphic={false}
+              maxLine={2}
+              minLine={1}
+              url={"https://github.com/"}
+            /> */}
+            {/* <LinkPreviewCus /> */}
+            {/* <Microlink url="https://github.com/" media="image" /> */}
+            {/* {JSON.stringify(result)} */}
+            <Body>
+              {previewData.image !== undefined ? (
+                <Image
+                  source={previewData.image.url}
+                  style={{
+                    height: 200,
+                    width: null,
+                    flex: 1,
+                    resizeMode: "cover",
+                  }}
+                />
+              ) : null}
+              {previewData.description && (
+                <Text> {previewData.description} </Text>
+              )}
+            </Body>
           </CardItem>
           {/* END PREVIEW */}
           <CardItem footer bordered style={{ justifyContent: "space-between" }}>
@@ -150,7 +211,7 @@ export default function CommentsContainer({ route, navigation }) {
               Total comments: {props.story.kids.length}
             </Text>
             <Button
-              info
+              danger
               onPress={() => {
                 navigation.pop();
                 // Actions.pop();!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
