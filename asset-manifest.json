@@ -1,0 +1,36 @@
+{
+  "files": {
+    "app.js": "/real-hacker-news-app/static/js/app.20f9c1bc.chunk.js",
+    "app.js.map": "/real-hacker-news-app/static/js/app.20f9c1bc.chunk.js.map",
+    "runtime~app.js": "/real-hacker-news-app/static/js/runtime~app.55120d41.js",
+    "runtime~app.js.map": "/real-hacker-news-app/static/js/runtime~app.55120d41.js.map",
+    "static/js/2.d72518c8.chunk.js": "/real-hacker-news-app/static/js/2.d72518c8.chunk.js",
+    "static/js/2.d72518c8.chunk.js.map": "/real-hacker-news-app/static/js/2.d72518c8.chunk.js.map",
+    "fonts/AntDesign.ttf": "/real-hacker-news-app/./fonts/AntDesign.ttf",
+    "fonts/Entypo.ttf": "/real-hacker-news-app/./fonts/Entypo.ttf",
+    "fonts/Feather.ttf": "/real-hacker-news-app/./fonts/Feather.ttf",
+    "fonts/FontAwesome.ttf": "/real-hacker-news-app/./fonts/FontAwesome.ttf",
+    "fonts/FontAwesome5_Brands.ttf": "/real-hacker-news-app/./fonts/FontAwesome5_Brands.ttf",
+    "fonts/FontAwesome5_Solid.ttf": "/real-hacker-news-app/./fonts/FontAwesome5_Solid.ttf",
+    "fonts/Fontisto.ttf": "/real-hacker-news-app/./fonts/Fontisto.ttf",
+    "fonts/Foundation.ttf": "/real-hacker-news-app/./fonts/Foundation.ttf",
+    "fonts/Ionicons.ttf": "/real-hacker-news-app/./fonts/Ionicons.ttf",
+    "fonts/MaterialCommunityIcons.ttf": "/real-hacker-news-app/./fonts/MaterialCommunityIcons.ttf",
+    "fonts/MaterialIcons.ttf": "/real-hacker-news-app/./fonts/MaterialIcons.ttf",
+    "fonts/Roboto.ttf": "/real-hacker-news-app/./fonts/Roboto.ttf",
+    "fonts/Roboto_medium.ttf": "/real-hacker-news-app/./fonts/Roboto_medium.ttf",
+    "fonts/SimpleLineIcons.ttf": "/real-hacker-news-app/./fonts/SimpleLineIcons.ttf",
+    "favicon-16.png": "/real-hacker-news-app/favicon-16.png",
+    "favicon-32.png": "/real-hacker-news-app/favicon-32.png",
+    "favicon.ico": "/real-hacker-news-app/favicon.ico",
+    "index.html": "/real-hacker-news-app/index.html",
+    "manifest.json": "/real-hacker-news-app/manifest.json",
+    "serve.json": "/real-hacker-news-app/serve.json",
+    "static/js/2.d72518c8.chunk.js.LICENSE.txt": "/real-hacker-news-app/static/js/2.d72518c8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.55120d41.js",
+    "static/js/2.d72518c8.chunk.js",
+    "static/js/app.20f9c1bc.chunk.js"
+  ]
+}
