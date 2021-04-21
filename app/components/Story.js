@@ -5,8 +5,8 @@ import { Card, CardItem, Body, Text, Left, Icon } from "native-base";
 
 import { RefreshControl } from "react-native";
 
-import { Actions } from "react-native-router-flux";
-import RNUrlPreview from "react-native-url-preview";
+// import { Actions } from "react-native-router-flux"; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+// import RNUrlPreview from "react-native-url-preview";!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 export const Story = memo(function Story(props) {
   //set story
@@ -73,7 +73,7 @@ export const Story = memo(function Story(props) {
       {/* BODY OF A STORY */}
       <CardItem>
         <Body style={{ color: "blue" }}>
-          <RNUrlPreview text={story.url} />
+          {/* <RNUrlPreview text={story.url} />!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
           {/* <Text>Press to open in browser</Text> */}
         </Body>
       </CardItem>
@@ -85,7 +85,7 @@ export const Story = memo(function Story(props) {
           <Text
             style={{ color: "blue" }}
             onPress={() => {
-              Actions.pageTwo({ story });
+              // Actions.pageTwo({ story });!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }}
           >
             Show comments({story.kids.length})

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Header, Title, Content, Body } from "native-base";
 
-import { Router, Scene } from "react-native-router-flux";
+// import { Router, Scene } from "react-native-router-flux";!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 import { useFonts } from "expo-font";
 import StoriesContainer from "./app/containers/StoriesContainer";
@@ -28,8 +28,9 @@ export default function App() {
           </Title>
         </Body>
       </Header>
-
-      <Router hideNavBar="true">
+      <StoriesContainer />
+      {/* <CommentsContainer /> */}
+      {/* <Router hideNavBar="true">
         <Scene key="root" hideNavBar={true}>
           <Content style={{ backgroundColor: "grey" }}>
             <Scene
@@ -47,7 +48,7 @@ export default function App() {
             />
           </Content>
         </Scene>
-      </Router>
+      </Router> */}
     </Container>
   );
 }

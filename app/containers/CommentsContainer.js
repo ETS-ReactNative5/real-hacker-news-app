@@ -12,8 +12,8 @@ import {
   Body,
 } from "native-base";
 
-import { Actions } from "react-native-router-flux";
-import { LinkPreview } from "@flyerhq/react-native-link-preview";
+// import { Actions } from "react-native-router-flux";!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// import { LinkPreview } from "@flyerhq/react-native-link-preview";
 import { Comment } from "../components/Comment";
 import { getStory } from "../services/hackingNewsAPI";
 import { RefreshControl } from "react-native";
@@ -124,7 +124,7 @@ export default function CommentsContainer(props) {
             bordered
             style={{ justifyContent: "center", alignItems: "center" }}
           >
-            <LinkPreview text={props.story.url} />
+            {/* <LinkPreview text={props.story.url} /> */}
           </CardItem>
           {/* END PREVIEW */}
           <CardItem footer bordered style={{ justifyContent: "space-between" }}>
@@ -134,7 +134,7 @@ export default function CommentsContainer(props) {
             <Button
               info
               onPress={() => {
-                Actions.pop();
+                // Actions.pop();!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
               }}
             >
               <Text>Back to news page</Text>

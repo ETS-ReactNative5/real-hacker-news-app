@@ -23,7 +23,12 @@ export default function StoriesContainer() {
 
   const handleSetStoriesToShow = () => {
     if (storiesToShow < 500) {
+      setRefreshing(true);
       setStoriesToShow(storiesToShow + 20);
+      setInterval(() => {
+        setRefreshing(false);
+      }, 1500);
+      // setRefreshing(false);
     } else {
       setStoriesToShow(500);
     }

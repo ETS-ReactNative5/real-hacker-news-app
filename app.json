@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "real-hacker-news-app",
+    "name": "Real hacker news app",
     "slug": "real-hacker-news-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,9 +13,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -27,6 +25,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Stay in touch with real hacker news",
+    "githubUrl": "https://github.com/foxcaulfield/real-hacker-news-app"
   }
 }

@@ -1,13 +1,18 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "homepage": "http://foxcaulfield.github.io/real-hacker-news-app",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "deploy": "gh-pages -d web-build",
+    "predeploy": "expo build:web"
   },
   "dependencies": {
+    "@babel/runtime": "7.0.0-beta.55",
+    "@expo/webpack-config": "^0.12.67",
     "@flyerhq/react-native-link-preview": "^1.2.0",
     "@react-native-community/blur": "^3.6.0",
     "@react-native-community/datetimepicker": "3.2.0",
@@ -17,7 +22,11 @@
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.4",
     "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-relay": "^11.0.2",
+    "babel-preset-es2015": "^6.24.1",
     "crypto-js": "^4.0.0",
+    "css-select": "^4.1.2",
     "expo": "^41.0.0",
     "expo-font": "~9.1.0",
     "expo-status-bar": "~1.0.4",
@@ -25,13 +34,16 @@
     "link-preview-js": "^2.1.6",
     "metascraper": "^5.21.5",
     "metascraper-image": "^5.21.5",
+    "metro-react-native-babel-preset": "^0.66.0",
     "moment": "^2.29.1",
     "native-base": "^2.15.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
+    "react-native-dotenv": "^2.5.5",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-image-progress": "^1.1.1",
+    "react-native-keyboard-aware-scroll-view": "^0.9.3",
     "react-native-paper": "^4.7.2",
     "react-native-progress": "^4.1.2",
     "react-native-reanimated": "^2.1.0",
@@ -48,7 +60,8 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "eslint": "^7.24.0",
-    "eslint-plugin-react": "^7.23.2"
+    "eslint-plugin-react": "^7.23.2",
+    "gh-pages": "^3.1.0"
   },
   "private": true
 }
