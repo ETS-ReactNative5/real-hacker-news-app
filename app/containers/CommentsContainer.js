@@ -29,7 +29,9 @@ const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
 };
 //SCROLLVIEW INFINITE SCROLL
 
-export default function CommentsContainer(props) {
+export default function CommentsContainer({ route, navigation }) {
+  console.log(navigation);
+  let props = route.params;
   // console.log(props.story.id);
 
   //set number comments to show
@@ -134,6 +136,7 @@ export default function CommentsContainer(props) {
             <Button
               info
               onPress={() => {
+                navigation.pop();
                 // Actions.pop();!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
               }}
             >

@@ -17,7 +17,8 @@ const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
 };
 // END SCROLLVIEW INFINITE SCROLL
 
-export default function StoriesContainer() {
+export default function StoriesContainer({ navigation }) {
+  // console.log(navigation);
   //set number stories to show
   const [storiesToShow, setStoriesToShow] = useState(20);
 
@@ -103,9 +104,14 @@ export default function StoriesContainer() {
       {storyIds.slice(0, storiesToShow).map((storyId) => (
         <TouchableOpacity
           key={storyId}
+          onPress={() => {
+            // navigation.navigate("Comments", {
+            //   storyId: storyId,
+            // });
+          }}
           // onPress= {() => {Actions.pageTwo({storyId: storyId}); }}
         >
-          <Story key={storyId} storyId={storyId} />
+          <Story key={storyId} storyId={storyId} navigation={navigation} />
         </TouchableOpacity>
       ))}
       {/* END MAP API CALL RESULT */}

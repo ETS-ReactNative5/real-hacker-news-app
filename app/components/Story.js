@@ -85,6 +85,9 @@ export const Story = memo(function Story(props) {
           <Text
             style={{ color: "blue" }}
             onPress={() => {
+              props.navigation.navigate("Comments", {
+                story,
+              });
               // Actions.pageTwo({ story });!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }}
           >
