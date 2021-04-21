@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import axios from "axios";
 
 export const baseUrl = "https://hacker-news.firebaseio.com/v0";
@@ -24,7 +25,15 @@ export const getStory = async (storyId) => {
   return result;
 };
 
-export const getStoryIds = async () => {
-  const result = await axios.get(newStoriesUrl).then(({ data }) => data);
+export const getStoryIds = async (type) => {
+  let newsType =
+    type === 1
+      ? newStoriesUrl
+      : type === 2
+      ? bestStoriesUrl
+      : type === 2
+      ? topStoriesUrl
+      : newStoriesUrl;
+  const result = await axios.get(newsType).then(({ data }) => data);
   return result;
 };

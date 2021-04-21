@@ -14,6 +14,8 @@ import {
 
 // import { Actions } from "react-native-router-flux";!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // import { LinkPreview } from "@flyerhq/react-native-link-preview";
+// import { getLinkPreview, getPreviewFromContent } from "link-preview-js";
+
 import { Comment } from "../components/Comment";
 import { getStory } from "../services/hackingNewsAPI";
 import { RefreshControl } from "react-native";
@@ -30,7 +32,9 @@ const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
 //SCROLLVIEW INFINITE SCROLL
 
 export default function CommentsContainer({ route, navigation }) {
-  console.log(navigation);
+  // const [previewContainer, setPreviewContainer] = useState({});
+  // console.log(navigation);
+
   let props = route.params;
   // console.log(props.story.id);
 
@@ -73,6 +77,13 @@ export default function CommentsContainer({ route, navigation }) {
       .then(() => setRefreshing(false));
     // .then(()=>{console.log("story useEffect refresh");});
 
+    // getLinkPreview("https://www.youtube.com/watch?v=MejbOFk7H6c").then(
+    //   (data) => {
+    //     console.log(data);
+    //     setPreviewContainer(data);
+    //   }
+    // );
+
     //set interval for repeating refresh
     const interval = setInterval(() => {
       setRefreshing(true);
@@ -94,6 +105,10 @@ export default function CommentsContainer({ route, navigation }) {
 
   //date converting
   let date = new Date(props.story.time * 1000).toDateString();
+
+  //preview
+
+  //preview
 
   return (
     <Container>
@@ -126,6 +141,7 @@ export default function CommentsContainer({ route, navigation }) {
             bordered
             style={{ justifyContent: "center", alignItems: "center" }}
           >
+            {/* <Text>{previewContainer.description}</Text> */}
             {/* <LinkPreview text={props.story.url} /> */}
           </CardItem>
           {/* END PREVIEW */}

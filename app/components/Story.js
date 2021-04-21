@@ -1,12 +1,21 @@
 import React, { useEffect, useState, memo } from "react";
 import { getStory } from "../services/hackingNewsAPI";
 import { mapTime } from "../mappers/mapTime";
-import { Card, CardItem, Body, Text, Left, Icon } from "native-base";
+import {
+  Card,
+  CardItem,
+  Body,
+  Text,
+  Left,
+  Icon,
+  Button,
+  // Right,
+} from "native-base";
 
-import { RefreshControl } from "react-native";
+import { Linking, RefreshControl } from "react-native";
 
 // import { Actions } from "react-native-router-flux"; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-// import RNUrlPreview from "react-native-url-preview";!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// import RNUrlPreview from "react-native-url-preview"; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 export const Story = memo(function Story(props) {
   //set story
@@ -71,11 +80,20 @@ export const Story = memo(function Story(props) {
       {/* END HEADER OF A STORY */}
 
       {/* BODY OF A STORY */}
-      <CardItem>
-        <Body style={{ color: "blue" }}>
-          {/* <RNUrlPreview text={story.url} />!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
-          {/* <Text>Press to open in browser</Text> */}
-        </Body>
+      <CardItem style={{ justifyContent: "flex-end" }}>
+        {/* <Body style={{ color: "blue" }}> */}
+        {/* <Right> */}
+        {/* <RNUrlPreview text={story.url} /> */}
+        {/* <Text>Press to open in browser</Text> */}
+        <Button
+          style={{ alignSelf: "flex-end" }}
+          info
+          onPress={() => Linking.openURL(story.url)}
+        >
+          <Text>Open link</Text>
+        </Button>
+        {/* </Right> */}
+        {/* </Body> */}
       </CardItem>
       {/* END BODY OF A STORY */}
 

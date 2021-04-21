@@ -45,7 +45,7 @@ export default function StoriesContainer({ navigation }) {
     setRefreshing(true);
     // console.log("swipe refresh");
 
-    getStoryIds()
+    getStoryIds(2)
       .then((data) => {
         setStoryIds(data);
       })
@@ -56,7 +56,7 @@ export default function StoriesContainer({ navigation }) {
   useEffect(() => {
     setRefreshing(true);
 
-    getStoryIds()
+    getStoryIds(2)
       .then((data) => {
         setStoryIds(data);
       })
@@ -66,7 +66,7 @@ export default function StoriesContainer({ navigation }) {
     //set interval for repeating refresh
     const interval = setInterval(() => {
       setRefreshing(true);
-      getStoryIds()
+      getStoryIds(2)
         .then((data) => {
           setStoryIds(data);
         })
