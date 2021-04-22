@@ -15,8 +15,8 @@ touch with real hacker news
 You can try it with GitHub-Pages
 [here](https://foxcaulfield.github.io/real-hacker-news-app/)
 
-You can also check out the project page on EXPO  
- [EXPO](https://expo.io/@foxcaulfield/projects/real-hacker-news-app)  
+You can also check out the project page on [EXPO](https://expo.io/@foxcaulfield/projects/real-hacker-news-app)
+ 
  Note: for Android device just scan QR at the EXPO page  
  ![](./screenshots/screenshotExpo2.png)
 
