@@ -17,7 +17,7 @@ You can try it with GitHub-Pages
 
 You can also check out the project page on [EXPO](https://expo.io/@foxcaulfield/projects/real-hacker-news-app)
  
- Note: for Android device just scan QR at the EXPO page  
+ Note: for Android devices just scan QR at the [EXPO](https://expo.io/@foxcaulfield/projects/real-hacker-news-app) page or right here below 😎
  ![](./screenshots/screenshotExpo2.png)
 
 ## Technologies, libraries & services
