@@ -22,6 +22,8 @@ import { getStory, getMeta } from "../services/hackingNewsAPI";
 import { RefreshControl, Image, Linking } from "react-native";
 // import axios from "axios";
 
+import HTML from "react-native-render-html";
+
 //SCROLLVIEW INFINITE SCROLL (+100 causes earlier scroll update)
 const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
   // console.log({ layoutMeasurement, contentOffset, contentSize });
@@ -55,10 +57,12 @@ export default function CommentsContainer({ route, navigation }) {
   const [commentsToShow, setCommentsToShow] = useState(5);
 
   const handleSetCommentsToShow = () => {
-    if (commentsToShow < props.story.kids.length) {
-      setCommentsToShow(commentsToShow + 5);
-    } else {
-      setCommentsToShow(props.story.kids.length);
+    if (props.story.kids) {
+      if (commentsToShow < props.story.kids.length) {
+        setCommentsToShow(commentsToShow + 5);
+      } else {
+        setCommentsToShow(props.story.kids.length);
+      }
     }
   };
 
@@ -225,7 +229,8 @@ export default function CommentsContainer({ route, navigation }) {
           >
             <Body>
               {previewData.data && (
-                <Text> {previewData.data.description} </Text>
+                <HTML source={{ html: previewData.data.description }} />
+                // <Text> {previewData.data.description} </Text>
               )}
 
               {previewData.status ===
