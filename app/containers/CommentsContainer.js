@@ -15,7 +15,7 @@ import {
   Spinner,
 } from "native-base";
 
-import { WebView } from "react-native-webview";
+// import { WebView } from "react-native-webview";
 
 // import Microlink from "@microlink/react"; // might work someday
 
@@ -24,7 +24,7 @@ import { getStory, getMeta } from "../services/hackingNewsAPI";
 import { RefreshControl, Image, Linking } from "react-native";
 // import axios from "axios";
 
-import HTML from "react-native-render-html";
+// import HTML from "react-native-render-html";
 
 //SCROLLVIEW INFINITE SCROLL (+100 causes earlier scroll update)
 const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
