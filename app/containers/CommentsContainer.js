@@ -10,10 +10,12 @@ import {
   Icon,
   Left,
   Body,
-  Right,
-  Thumbnail,
+  // Right,
+  // Thumbnail,
   Spinner,
 } from "native-base";
+
+import { WebView } from "react-native-webview";
 
 // import Microlink from "@microlink/react"; // might work someday
 
@@ -148,8 +150,6 @@ export default function CommentsContainer({ route, navigation }) {
       <Content
         onScroll={({ nativeEvent }) => {
           if (isCloseToBottom(nativeEvent)) {
-            // console.log(commentsToShow);
-            // console.log("bikini bottom");
             handleSetCommentsToShow();
           }
         }}
@@ -158,7 +158,6 @@ export default function CommentsContainer({ route, navigation }) {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        {/* STORY CARD */}
         <Card>
           <CardItem>
             <Left>
@@ -168,16 +167,14 @@ export default function CommentsContainer({ route, navigation }) {
                 <Text note>{date}</Text>
               </Body>
             </Left>
-            {previewData.status !==
+            {/* {previewData.status !==
               "The description is unavailable because the limit of requests is exceeded :(" &&
               previewData.data && (
                 <Right>
-                  <Thumbnail source={previewData.data.logo.url} />
+                  <Thumbnail square small source={previewData.data.logo.url} />
                 </Right>
-              )}
+              )} */}
           </CardItem>
-          {/* PREVIEW */}
-
           {previewData.status !==
             "The description is unavailable because the limit of requests is exceeded :(" &&
             previewData.data && (
@@ -190,10 +187,9 @@ export default function CommentsContainer({ route, navigation }) {
                   }}
                 >
                   {previewData.data.title}
-                </Text>{" "}
+                </Text>
               </CardItem>
             )}
-
           <CardItem cardBody>
             {previewData.status !==
               "The description is unavailable because the limit of requests is exceeded :(" &&
@@ -230,10 +226,9 @@ export default function CommentsContainer({ route, navigation }) {
           >
             <Body>
               {previewData.data && (
-                <HTML source={{ html: previewData.data.description }} />
-                // <Text> {previewData.data.description} </Text>
+                <Text>{previewData.data.description} </Text>
+                // <HTML source={{ html: previewData.data.description }} />
               )}
-
               {previewData.status ===
                 "The description is unavailable because the limit of requests is exceeded :(" && (
                 <Text>{previewData.status}</Text>
@@ -247,8 +242,6 @@ export default function CommentsContainer({ route, navigation }) {
               )}
             </Body>
           </CardItem>
-          {/* END PREVIEW */}
-
           <CardItem footer bordered style={{ justifyContent: "space-between" }}>
             <Body
               style={{
@@ -276,9 +269,6 @@ export default function CommentsContainer({ route, navigation }) {
             </Body>
           </CardItem>
         </Card>
-        {/* END STORY CARD */}
-
-        {/* MAP COMMENTS */}
         {comments &&
           comments.length > 0 &&
           comments
@@ -286,7 +276,6 @@ export default function CommentsContainer({ route, navigation }) {
             .map((commentId) => (
               <Comment key={commentId} commentId={commentId} />
             ))}
-        {/* MAP COMMENTS */}
       </Content>
     </Container>
   );

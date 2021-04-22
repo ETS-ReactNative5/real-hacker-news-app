@@ -15,9 +15,9 @@ You can try it with GitHub-Pages
 [here](https://foxcaulfield.github.io/real-hacker-news-app/)
 
 You can also check the project page on EXPO  
- [here](https://expo.io/@foxcaulfield/projects/real-hacker-news-app) Note: for Android
-device just scan QR at the page above  
- ![](./screenshots/screenshotExpo1.png)
+ [here](https://expo.io/@foxcaulfield/projects/real-hacker-news-app)  
+ Note: for Android device just scan QR at the page above  
+ ![](./screenshots/screenshotExpo2.png)
 
 ## Technologies, libraries & services
 
@@ -32,6 +32,14 @@ Built with:
 - axios
 - microlink
 - hacker news API
+- react-native-webview
+
+##Features:
+
+- Infinite news and commets scroll with lazy loading
+- Replies tree in comments
+- Preview with links
+- Real time updating
 
 ## How to use
 
@@ -46,14 +54,3 @@ Built with:
 
 - Toggle screenshots and replies  
   ![](./screenshots/screenshotReplies.png)
-
-Features:
-
-- Infinite news and commets scroll with lazy loading
-- Replies tree in comments
-- Preview with links
-- Real time updating
-
-Technologies, libraries:
-
-- API calls with axios

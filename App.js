@@ -53,7 +53,7 @@ export default function App() {
         <Header style={{ backgroundColor: "#003133" }}>
           <Body>
             <Title style={{ alignSelf: "center", margin: 10, color: "white" }}>
-              Real hacker news
+              Real hacker news 🐱‍👤
             </Title>
           </Body>
         </Header>
