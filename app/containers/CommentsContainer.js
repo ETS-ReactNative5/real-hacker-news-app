@@ -197,7 +197,8 @@ export default function CommentsContainer({ route, navigation }) {
           <CardItem cardBody>
             {previewData.status !==
               "The description is unavailable because the limit of requests is exceeded :(" &&
-              previewData.data && (
+              previewData.data &&
+              previewData.data.image && (
                 <Image
                   source={{ uri: previewData.data.image.url }}
                   style={{
