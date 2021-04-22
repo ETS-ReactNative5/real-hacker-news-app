@@ -1,22 +1,23 @@
-# 🐱‍👤 Real hacker news app
+# 🐱‍👤 Real hacker news app 📰
 
 ## About
 
 Full usable news application (client) built with React Native for keeping in
-touch with real hacker news
+touch with real hacker news  
+ **available on Web💻 & iOS🍏 & Android📱**
 
-## ScreenShot
+## Screenshot
 
-![](./screenshots/screenshotMain.png)
+![](./screenshots/screenshotMain4.png)
 
 ## Demo
 
 You can try it with GitHub-Pages
 [here](https://foxcaulfield.github.io/real-hacker-news-app/)
 
-You can also check the project page on EXPO  
- [here](https://expo.io/@foxcaulfield/projects/real-hacker-news-app)  
- Note: for Android device just scan QR at the page above  
+You can also check out the project page on EXPO  
+ [EXPO](https://expo.io/@foxcaulfield/projects/real-hacker-news-app)  
+ Note: for Android device just scan QR at the EXPO page  
  ![](./screenshots/screenshotExpo2.png)
 
 ## Technologies, libraries & services
@@ -32,11 +33,10 @@ Built with:
 - axios
 - microlink
 - hacker news API
-- react-native-webview
 
-##Features:
+## Features
 
-- Infinite news and commets scroll with lazy loading
+- Infinite news and comments scroll with lazy loading
 - Replies tree in comments
 - Preview with links
 - Real time updating
@@ -46,11 +46,14 @@ Built with:
 - Navigate between New, Top and Best news by tapping or swiping
   ![](./screenshots/screenshotTabs.png)
 
-- Tap "Open link" to open source link in browser
-  ![](./screenshots/screenshotOpenLink.png)
-
 - Move to complete information and comments by tapping "Show more"
   ![](./screenshots/screenshotShowMore.png)
 
-- Toggle screenshots and replies  
+- Toggle answers and replies  
   ![](./screenshots/screenshotReplies.png)
+
+- Tap "Open link" to open source link in browser, tap "Back to news page" for
+  step down to news scrolling  
+   ![](./screenshots/screenshotOpenLink.png)
+
+Happy hacking!🐱‍👤
