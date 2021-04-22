@@ -39,13 +39,14 @@ export const getStoryIds = async (type) => {
   return result;
 };
 
-export const getMeta = async (holyUrl) => {
-  console.log("holyUrl", holyUrl);
-  const result = await axios
-    .get(
-      `https://api.microlink.io/?url=${holyUrl}&audio=false&iframe=false&palette=false&screenshot=false&video=falses`
-    )
-    .then((data) => data.data.data);
-  // .then((data) => console.log(data));
-  return result;
-};
+// export const getMeta = async (holyUrl) => {
+//   console.log("holyUrl", holyUrl);
+//   const result = await axios
+//     .get(
+//       `https://api.microlink.io/?url=${holyUrl}&audio=false&iframe=false&palette=false&screenshot=false&video=falses`
+//     )
+//     .catch((data) => console.log(data))
+//     .then(({ ...data }) => data);
+//   // .then((data) => console.log(data));
+//   return result;
+// };

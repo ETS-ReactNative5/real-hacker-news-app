@@ -12,6 +12,7 @@ import {
   Left,
   Icon,
   Button,
+  Right,
   // Right,
   // Thumbnail,
   // Spinner,
@@ -93,43 +94,106 @@ export const Story = memo(function Story(props) {
       }
     >
       {/* HEADER OF A STORY */}
-      <CardItem header>
-        <Left>
-          <Icon name="newspaper-outline" />
+      <CardItem
+        header
+        style={{
+          flexDirection: "row",
+          // justifyContent: "space-between",
+          margin: 0,
+          padding: 0,
+          backgroundColor: "#ecf0f1",
+          // marginVertical: 0,
+          // paddingVertical: 0,
+        }}
+      >
+        <Left
+          style={{
+            // flexDirection: "row",
+            // justifyContent: "space-between",
+            margin: -10,
+            padding: 0,
+            // backgroundColor: "red",
+            // marginVertical: 0,
+            // paddingVertical: 0,
+          }}
+        >
+          <Icon name="newspaper-outline" style={{ fontSize: 48 }} />
           <Body>
             <Text style={{ fontWeight: "bold" }}>{story.title}</Text>
-            <Text note>By: {story.by}</Text>
-            <Text note>Rating: {story.score}</Text>
-            <Text note>{date}</Text>
           </Body>
         </Left>
+        {/* <Right>
+         
+        </Right> */}
+      </CardItem>
+      <CardItem header>
+        <Right style={{ alignItems: "flex-start", margin: -10, padding: 0 }}>
+          <Text note>By: {story.by}</Text>
+          <Text note>Rating: {story.score}</Text>
+          <Text note>{date}</Text>
+        </Right>
+        <Right
+          style={{
+            justifyContent: "flex-start",
+            margin: -10,
+            padding: 0,
+          }}
+        >
+          <Text note>Type: {story.type}</Text>
+          <Text note>{mapTime(story.time)} ago</Text>
+          {/* <Body style={{ color: "blue" }}> */}
+          {/* <Right> */}
+          {/* <RNUrlPreview text={story.url} /> */}
+          {/* <Text>Press to open in browser</Text> */}
+          {story.kids ? (
+            <Text
+              note
+              style={{ color: "grey" }}
+              // style={{ color: "blue" }}
+              // onPress={() => {
+              //   props.navigation.navigate("Comments", {
+              //     story,
+              //   });
+              //   // Actions.pageTwo({ story });!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+              // }}
+            >
+              Total comments: {story.kids.length}
+            </Text>
+          ) : (
+            <Text note>No comments yet</Text>
+          )}
+        </Right>
       </CardItem>
       {/* END HEADER OF A STORY */}
 
       {/* BODY OF A STORY */}
-      <CardItem></CardItem>
-      <CardItem style={{ justifyContent: "flex-end" }}>
-        {/* <Body style={{ color: "blue" }}> */}
-        {/* <Right> */}
-        {/* <RNUrlPreview text={story.url} /> */}
-        {/* <Text>Press to open in browser</Text> */}
-        <Button
-          style={{ alignSelf: "flex-end" }}
-          info
-          onPress={() => Linking.openURL(story.url)}
-        >
-          <Text>Open link</Text>
-        </Button>
-        {/* </Right> */}
-        {/* </Body> */}
-      </CardItem>
+
       {/* END BODY OF A STORY */}
 
       {/* FOOTER OF A STORY */}
-      <CardItem footer bordered style={{ justifyContent: "space-between" }}>
-        {story.kids ? (
-          <Text
-            style={{ color: "blue" }}
+      <CardItem footer bordered>
+        <Body
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            margin: -10,
+            padding: 0,
+            // backgroundColor: "red",
+            // marginVertical: 0,
+            // paddingVertical: 0,
+          }}
+        >
+          <Button
+            style={{ margin: 0, padding: 0 }}
+            info
+            onPress={() => Linking.openURL(story.url)}
+          >
+            <Text>Open link</Text>
+          </Button>
+          <Button
+            disabled={false}
+            style={{ margin: 0, padding: 0 }}
+            warning
             onPress={() => {
               props.navigation.navigate("Comments", {
                 story,
@@ -137,15 +201,9 @@ export const Story = memo(function Story(props) {
               // Actions.pageTwo({ story });!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }}
           >
-            Show comments({story.kids.length})
-          </Text>
-        ) : (
-          <Text style={{ color: "grey" }}>No comments yet</Text>
-        )}
-
-        {/* onPress={() => Linking.openURL(story.url)}>link</Text> */}
-        <Text>{mapTime(story.time)} ago</Text>
-        {/* <Accordion dataArray={dataArray} expanded={0}/> */}
+            <Text>Show more</Text>
+          </Button>
+        </Body>
       </CardItem>
       {/* FOOTER OF A STORY */}
     </Card>

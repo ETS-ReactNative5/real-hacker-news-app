@@ -1,5 +1,11 @@
 import React from "react";
-import { Container, Header, Title, Content, Body } from "native-base";
+import {
+  Container,
+  Header,
+  Title,
+  // Content,
+  Body,
+} from "native-base";
 
 // import { Router, Scene } from "react-native-router-flux";!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -14,7 +20,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 // NAV
 
 // NAV
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
 const StoriesStack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 // NAV
