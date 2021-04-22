@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/real-hacker-news-app/static/js/app.7fa8ec1b.chunk.js",
-    "app.js.map": "/real-hacker-news-app/static/js/app.7fa8ec1b.chunk.js.map",
+    "app.js": "/real-hacker-news-app/static/js/app.3deac781.chunk.js",
+    "app.js.map": "/real-hacker-news-app/static/js/app.3deac781.chunk.js.map",
     "runtime~app.js": "/real-hacker-news-app/static/js/runtime~app.55120d41.js",
     "runtime~app.js.map": "/real-hacker-news-app/static/js/runtime~app.55120d41.js.map",
-    "static/js/2.a8749af2.chunk.js": "/real-hacker-news-app/static/js/2.a8749af2.chunk.js",
-    "static/js/2.a8749af2.chunk.js.map": "/real-hacker-news-app/static/js/2.a8749af2.chunk.js.map",
+    "static/js/2.ffe3ca4c.chunk.js": "/real-hacker-news-app/static/js/2.ffe3ca4c.chunk.js",
+    "static/js/2.ffe3ca4c.chunk.js.map": "/real-hacker-news-app/static/js/2.ffe3ca4c.chunk.js.map",
     "fonts/AntDesign.ttf": "/real-hacker-news-app/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/real-hacker-news-app/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/real-hacker-news-app/./fonts/Feather.ttf",
@@ -26,11 +26,11 @@
     "index.html": "/real-hacker-news-app/index.html",
     "manifest.json": "/real-hacker-news-app/manifest.json",
     "serve.json": "/real-hacker-news-app/serve.json",
-    "static/js/2.a8749af2.chunk.js.LICENSE.txt": "/real-hacker-news-app/static/js/2.a8749af2.chunk.js.LICENSE.txt"
+    "static/js/2.ffe3ca4c.chunk.js.LICENSE.txt": "/real-hacker-news-app/static/js/2.ffe3ca4c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime~app.55120d41.js",
-    "static/js/2.a8749af2.chunk.js",
-    "static/js/app.7fa8ec1b.chunk.js"
+    "static/js/2.ffe3ca4c.chunk.js",
+    "static/js/app.3deac781.chunk.js"
   ]
 }
