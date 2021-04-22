@@ -18,9 +18,6 @@ const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
 // END SCROLLVIEW INFINITE SCROLL
 
 export default function StoriesContainer({ navigation, route }) {
-  // console.log(route.params.type);
-  // console.log(navigation);
-  // console.log(navigation.dangerouslyGetState());
   //set number stories to show
   const [storiesToShow, setStoriesToShow] = useState(20);
 

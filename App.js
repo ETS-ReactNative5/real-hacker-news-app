@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Header,
-  Title,
-  // Content,
-  Body,
-} from "native-base";
-
-// import { Router, Scene } from "react-native-router-flux";!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+import { Container, Header, Title, Body } from "native-base";
 
 import { useFonts } from "expo-font";
 import StoriesContainer from "./app/containers/StoriesContainer";
@@ -26,19 +18,13 @@ const Tab = createMaterialTopTabNavigator();
 // NAV
 
 function StoriesStackScreen(props) {
-  // console.log(props.navigation.dangerouslyGetParent());
-  // console.log(props.route.params[0]);
-  // console.log(props.route.params.type);
-  // console.log(props);
   return (
     <StoriesStack.Navigator>
       <StoriesStack.Screen
-        // tabBarVisible={false}
         options={{ header: () => null }} //hides the title
         name="Stories"
         component={StoriesContainer}
         initialParams={{ type: props.route.params.type }}
-        // type={props.route.params[0]}
       />
       <StoriesStack.Screen
         name="Comments"
@@ -91,29 +77,6 @@ export default function App() {
             component={StoriesStackScreen}
           />
         </Tab.Navigator>
-        {/* <Stack.Navigator>
-          <Stack.Screen name="Stories" component={StoriesContainer} />
-          <Stack.Screen name="Comments" component={CommentsContainer} />
-        </Stack.Navigator> */}
-        {/* <Router hideNavBar="true">
-        <Scene key="root" hideNavBar={true}>
-          <Content style={{ backgroundColor: "grey" }}>
-            <Scene
-              key="pageOne"
-              component={StoriesContainer}
-              title="Fresh news"
-              initial={true}
-              hideNavBar={true}
-            />
-            <Scene
-              key="pageTwo"
-              component={CommentsContainer}
-              title="News info"
-              hideNavBar={true}
-            />
-          </Content>
-        </Scene>
-      </Router> */}
       </Container>
     </NavigationContainer>
   );

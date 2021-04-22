@@ -7,8 +7,6 @@ import { List } from "react-native-paper";
 
 import HTML from "react-native-render-html";
 
-// import { RefreshControl } from "react-native";
-
 export const Comment = memo(function Comment(props) {
   //toggle head comment(s) expanding
   const [expanded, setExpanded] = React.useState(true);
@@ -19,14 +17,6 @@ export const Comment = memo(function Comment(props) {
 
   //refreshing
   const [refreshing, setRefreshing] = React.useState(false);
-
-  // const onRefresh = React.useCallback(() => {
-  //   setRefreshing(true);
-
-  //   getComment(props.commentId)
-  //     .then((data) => setComment(data))
-  //     .then(() => setRefreshing(false));
-  // }, []);
 
   //useEffect for initialize and interval refreshing
   useEffect(() => {

@@ -13,20 +13,11 @@ import {
   Icon,
   Button,
   Right,
-  // Right,
-  // Thumbnail,
-  // Spinner,
 } from "native-base"; // Right,
 
 import { Linking, RefreshControl } from "react-native";
 
-// import { Actions } from "react-native-router-flux"; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-// import RNUrlPreview from "react-native-url-preview"; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 export const Story = memo(function Story(props) {
-  //setPreview
-  // const [previewData, setPreviewData] = useState({});
-
   //set story
   const [story, setStory] = useState({});
 
@@ -37,8 +28,6 @@ export const Story = memo(function Story(props) {
     setRefreshing(true);
     // console.log("story refresh");
 
-    // getMeta(story.url).then((res) => setPreviewData(res));
-
     getStory(props.storyId)
       .then((data) => data && data.url && setStory(data))
       .then(() => setRefreshing(false));
@@ -48,21 +37,6 @@ export const Story = memo(function Story(props) {
   useEffect(() => {
     setRefreshing(true);
 
-    // getMeta(story.url).then((res) => setPreviewData(res));
-
-    // getStory(props.storyId)
-    //   .then(function (data) {
-    //     data && data.url && setStory(data);
-    //     return data;
-    //   })
-    //   .then((data) => {
-    //     data &&
-    //       data.url &&
-    //       getMeta(data.url).then((res) => setPreviewData(res));
-    //   })
-
-    //   .then(() => setRefreshing(false));
-
     getStory(props.storyId)
       .then((data) => data && data.url && setStory(data))
       .then(() => setRefreshing(false));
@@ -71,8 +45,6 @@ export const Story = memo(function Story(props) {
     //set interval for repeating refresh
     const interval = setInterval(() => {
       setRefreshing(true);
-
-      // getMeta(story.url).then((res) => setPreviewData(res));
 
       getStory(props.storyId)
         .then((data) => data && data.url && setStory(data))
@@ -98,23 +70,15 @@ export const Story = memo(function Story(props) {
         header
         style={{
           flexDirection: "row",
-          // justifyContent: "space-between",
           margin: 0,
           padding: 0,
           backgroundColor: "#ecf0f1",
-          // marginVertical: 0,
-          // paddingVertical: 0,
         }}
       >
         <Left
           style={{
-            // flexDirection: "row",
-            // justifyContent: "space-between",
             margin: -10,
             padding: 0,
-            // backgroundColor: "red",
-            // marginVertical: 0,
-            // paddingVertical: 0,
           }}
         >
           <Icon name="newspaper-outline" style={{ fontSize: 48 }} />
@@ -122,9 +86,6 @@ export const Story = memo(function Story(props) {
             <Text style={{ fontWeight: "bold" }}>{story.title}</Text>
           </Body>
         </Left>
-        {/* <Right>
-         
-        </Right> */}
       </CardItem>
       <CardItem header>
         <Right style={{ alignItems: "flex-start", margin: -10, padding: 0 }}>
@@ -141,22 +102,8 @@ export const Story = memo(function Story(props) {
         >
           <Text note>Type: {story.type}</Text>
           <Text note>{mapTime(story.time)} ago</Text>
-          {/* <Body style={{ color: "blue" }}> */}
-          {/* <Right> */}
-          {/* <RNUrlPreview text={story.url} /> */}
-          {/* <Text>Press to open in browser</Text> */}
           {story.kids ? (
-            <Text
-              note
-              style={{ color: "grey" }}
-              // style={{ color: "blue" }}
-              // onPress={() => {
-              //   props.navigation.navigate("Comments", {
-              //     story,
-              //   });
-              //   // Actions.pageTwo({ story });!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-              // }}
-            >
+            <Text note style={{ color: "grey" }}>
               Total comments: {story.kids.length}
             </Text>
           ) : (
@@ -166,10 +113,6 @@ export const Story = memo(function Story(props) {
       </CardItem>
       {/* END HEADER OF A STORY */}
 
-      {/* BODY OF A STORY */}
-
-      {/* END BODY OF A STORY */}
-
       {/* FOOTER OF A STORY */}
       <CardItem footer bordered>
         <Body
@@ -178,9 +121,6 @@ export const Story = memo(function Story(props) {
             justifyContent: "space-between",
             margin: -10,
             padding: 0,
-            // backgroundColor: "red",
-            // marginVertical: 0,
-            // paddingVertical: 0,
           }}
         >
           <Button
@@ -198,7 +138,6 @@ export const Story = memo(function Story(props) {
               props.navigation.navigate("Comments", {
                 story,
               });
-              // Actions.pageTwo({ story });!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }}
           >
             <Text>Show more</Text>
