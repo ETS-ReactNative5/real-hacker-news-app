@@ -7,8 +7,14 @@ touch with hacker news
  **available on Web💻 & iOS🍏 & Android📱**
 
 ## Screenshot
+* **browser**
+![](./screenshots/screenshotMainBrowser.png)
 
-![](./screenshots/screenshotMain4.png)
+* **iOS**
+![](./screenshots/screenshotMainIos.png)
+
+* **Android**
+![](./screenshots/screenshotMainAndroid.png)
 
 ## Demo
 
@@ -44,16 +50,16 @@ Built with:
 ## How to use
 
 - Navigate between New, Top and Best news by tapping or swiping
-  ![](./screenshots/screenshotTabs.png)
+  ![](./screenshots/screenshotTabs3.png)
 
 - Move to complete information and comments by tapping "Show more"
-  ![](./screenshots/screenshotShowMore.png)
+  ![](./screenshots/screenshotShowMore2.png)
 
 - Toggle answers and replies  
-  ![](./screenshots/screenshotReplies.png)
+  ![](./screenshots/screenshotReplies2.png)
 
 - Tap "Open link" to open source link in browser, tap "Back to news page" for
   step down to news scrolling  
-   ![](./screenshots/screenshotOpenLink.png)
+   ![](./screenshots/screenshotOpenLink2.png)
 
 Happy hacking!🐱‍👤
