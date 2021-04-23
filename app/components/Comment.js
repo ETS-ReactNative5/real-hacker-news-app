@@ -6,6 +6,7 @@ import { Text } from "native-base";
 import { List } from "react-native-paper";
 
 import HTML from "react-native-render-html";
+import { useWindowDimensions } from "react-native";
 
 export const Comment = memo(function Comment(props) {
   //toggle head comment(s) expanding
@@ -67,7 +68,7 @@ export const Comment = memo(function Comment(props) {
           <List.Icon {...props} icon="chat-processing-outline" />
         )}
       >
-        <List.Item left={() => <HTML source={{ html: comment.text }} />} />
+        <List.Item left={() => <Text><HTML source={{ html: comment.text }} contentWidth={useWindowDimensions().width}/></Text>} />
         <List.Item
           left={() => (
             <Text>

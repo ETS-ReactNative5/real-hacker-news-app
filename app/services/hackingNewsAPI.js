@@ -26,7 +26,7 @@ export const getStory = async (storyId) => {
 };
 
 export const getStoryIds = async (type) => {
-  console.log(type);
+  // console.log(type);
   let newsType =
     type === "n"
       ? newStoriesUrl
@@ -40,7 +40,7 @@ export const getStoryIds = async (type) => {
 };
 
 export const getMeta = async (holyUrl) => {
-  console.log("holyUrl", holyUrl);
+  // console.log("holyUrl", holyUrl);
   const result = await axios
     .get(
       `https://api.microlink.io/?url=${holyUrl}&audio=false&iframe=false&palette=false&screenshot=false&video=falses`

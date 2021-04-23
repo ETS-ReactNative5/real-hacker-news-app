@@ -90,7 +90,7 @@ export default function CommentsContainer({ route, navigation }) {
 
     getMeta(props.story.url)
       .catch((data) => {
-        console.log("datac", data);
+        console.log("datacatch", data);
         setPreviewData({
           status:
             "The description is unavailable because the limit of requests is exceeded :(",
@@ -101,12 +101,12 @@ export default function CommentsContainer({ route, navigation }) {
         };
       })
       .then((data) => {
-        console.log("not parsed", data);
+        // console.log("not parsed", data);
         setPreviewData(data);
       })
       .then(() => setRefreshing(false));
     return () => {
-      console.log("oops i did it again");
+      // console.log("oops i did it again");
       setPreviewData({});
     };
   }, []);
@@ -130,7 +130,7 @@ export default function CommentsContainer({ route, navigation }) {
         .then((data) => data.kids && setComments(data.kids))
         .then(() => setRefreshing(false));
       // .then(()=>{console.log("story auto refresh");});
-      console.log(previewData);
+      // console.log(previewData);
     }, 15000);
 
     //and clear it :)

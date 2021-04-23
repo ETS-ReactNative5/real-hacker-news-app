@@ -60,6 +60,6 @@ Built with:
 
 - Tap "Open link" to open source link in browser, tap "Back to news page" for
   step down to news scrolling  
-   ![](./screenshots/screenshotOpenLink2.png)
+   ![](./screenshots/screenshotOpenLink3.png)
 
 Happy hacking!🐱‍👤
