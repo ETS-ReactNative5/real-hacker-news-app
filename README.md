@@ -7,14 +7,14 @@ touch with hacker news
  **available on Web💻 & iOS🍏 & Android📱**
 
 ## Screenshot
-* **browser**
+* **Browser**
 ![](./screenshots/screenshotMainBrowser.png)
 
 * **iOS**
-![](./screenshots/screenshotMainIos.png)
+![](./screenshots/screenshotMainIos2.png)
 
 * **Android**
-![](./screenshots/screenshotMainAndroid.png)
+![](./screenshots/screenshotMainAndroid2.png)
 
 ## Demo
 
@@ -53,7 +53,7 @@ Built with:
   ![](./screenshots/screenshotTabs3.png)
 
 - Move to complete information and comments by tapping "Show more"
-  ![](./screenshots/screenshotShowMore2.png)
+  ![](./screenshots/screenshotShowMore3.png)
 
 - Toggle answers and replies  
   ![](./screenshots/screenshotReplies2.png)
