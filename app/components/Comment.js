@@ -6,7 +6,8 @@ import { Text } from "native-base";
 import { List } from "react-native-paper";
 
 import HTML from "react-native-render-html";
-import { useWindowDimensions } from "react-native";
+import { useWindowDimensions, Platform } from "react-native";
+// import { WebView } from "react-native-webview";
 
 export const Comment = memo(function Comment(props) {
   //toggle head comment(s) expanding
@@ -68,7 +69,27 @@ export const Comment = memo(function Comment(props) {
           <List.Icon {...props} icon="chat-processing-outline" />
         )}
       >
-        <List.Item left={() => <Text><HTML source={{ html: comment.text }} contentWidth={useWindowDimensions().width}/></Text>} />
+        <List.Item
+          left={
+            Platform.OS !== "android" ? (
+              () => (
+                <Text style={{ flexWrap: "wrap" }}>
+                  <HTML
+                    source={{ html: comment.text }}
+                    contentWidth={useWindowDimensions().width}
+                    style={{ flexWrap: "wrap" }}
+                  />{" "}
+                </Text>
+              )
+            ) : ( () => (
+              <HTML
+                source={{ html: comment.text }}
+                // contentWidth={useWindowDimensions().width}
+                style={{ flexWrap: "wrap" }}
+              />)
+            )
+          }
+        />
         <List.Item
           left={() => (
             <Text>
