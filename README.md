@@ -3,7 +3,7 @@
 ## About
 
 Full usable news application (client) built with React Native for keeping in
-touch with real hacker news  
+touch with hacker news  
  **available on Web💻 & iOS🍏 & Android📱**
 
 ## Screenshot
@@ -17,7 +17,7 @@ You can try it with GitHub-Pages
 
 You can also check out the project page on [EXPO](https://expo.io/@foxcaulfield/projects/real-hacker-news-app)
  
- Note: for Android devices just scan QR at the [EXPO](https://expo.io/@foxcaulfield/projects/real-hacker-news-app) page or right here below 😎
+ Note: you can just scan QR at the [EXPO](https://expo.io/@foxcaulfield/projects/real-hacker-news-app) page or right here below 😎
  ![](./screenshots/screenshotExpo2.png)
 
 ## Technologies, libraries & services
